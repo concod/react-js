@@ -1,0 +1,57 @@
+.sw {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.sw-display {
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: 3.5rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  font-variant-numeric: tabular-nums;
+}
+
+.sw-controls {
+  display: flex;
+  gap: 0.6rem;
+}
+
+.sw-btn {
+  padding: 0.6rem 1.4rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border: 1px solid #d0d7e2;
+  border-radius: 10px;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s, transform 0.05s;
+}
+
+.sw-btn:hover {
+  background: rgba(148, 163, 184, 0.12);
+}
+
+.sw-btn:active {
+  transform: scale(0.97);
+}
+
+.sw-btn.start {
+  border-color: #22c55e;
+  color: #22c55e;
+}
+
+.sw-btn.start:hover {
+  background: rgba(34, 197, 94, 0.12);
+}
+
+.sw-btn.stop {
+  border-color: #ef4444;
+  color: #ef4444;
+}
+
+.sw-btn.stop:hover {
+  background: rgba(239, 68, 68, 0.12);
+}

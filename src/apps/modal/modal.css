@@ -1,0 +1,55 @@
+.modal-overlay {
+  position: fixed;
+  inset: 0; /* top:0 right:0 bottom:0 left:0 — full screen */
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(3px);
+  /* Center the dialog horizontally + vertically */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: #fff;
+  color: #1a1a1a;
+  width: min(90vw, 460px);
+  border-radius: 12px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+  overflow: hidden;
+}
+
+.modal-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.modal-title h2 {
+  margin: 0;
+  font-size: 1.15rem;
+}
+
+.modal-close {
+  border: none;
+  background: transparent;
+  font-size: 1rem;
+  cursor: pointer;
+  color: #6b7280;
+  padding: 0.35rem 0.5rem;
+  border-radius: 8px;
+  line-height: 1;
+}
+
+.modal-close:hover {
+  background: #f3f4f6;
+  color: #111;
+}
+
+.modal-body {
+  padding: 1.25rem;
+  display: grid;
+  gap: 0.75rem;
+}

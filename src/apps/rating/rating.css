@@ -1,0 +1,49 @@
+.stars {
+  display: inline-flex;
+  gap: 0.15rem;
+}
+
+/* Container that stacks the gray base and the gold (clipped) overlay. */
+.star-wrap {
+  position: relative;
+  display: inline-block;
+  font-size: 2.25rem;
+  line-height: 1;
+  cursor: pointer;
+  user-select: none;
+  transition: transform 0.08s;
+}
+
+.star-wrap:hover {
+  transform: scale(1.12);
+}
+
+/* Gray base star — always fully visible underneath. */
+.star-bg {
+  color: #d1d5db;
+}
+
+/* Gold overlay — sits exactly on top, clipped by width to show a fraction. */
+.star-fg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: #fbbf24;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.reset-btn {
+  padding: 0.45rem 0.9rem;
+  font-size: 0.9rem;
+  border: 1px solid #d0d7e2;
+  border-radius: 8px;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.reset-btn:hover {
+  background: rgba(148, 163, 184, 0.12);
+}
