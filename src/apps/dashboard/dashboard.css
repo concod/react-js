@@ -1,0 +1,103 @@
+/* Tokens mirror /DESIGN.md. Scoped to .dash so they don't leak into other apps. */
+.dash {
+  --surface: #fcfcfb;
+  --page: #f9f9f7;
+  --ink-primary: #0b0b0b;
+  --ink-secondary: #52514e;
+  --ink-muted: #898781;
+  --gridline: #e1e0d9;
+  --baseline: #c3c2b7;
+  --primary: #2a78d6;
+  --delta-up: #006300;
+  --status-good: #0ca30c;
+  --status-warning: #fab219;
+  --status-critical: #d03b3b;
+  --hairline: rgba(11, 11, 11, 0.1);
+
+  display: grid;
+  gap: 16px;
+  padding: 16px;
+  border-radius: 12px;
+  background: var(--page);
+  color: var(--ink-primary);
+  font: 400 14px/1.5 system-ui, -apple-system, 'Segoe UI', sans-serif;
+  letter-spacing: normal;
+  text-align: left;
+}
+
+@media (prefers-color-scheme: dark) {
+  .dash {
+    --surface: #1a1a19;
+    --page: #0d0d0d;
+    --ink-primary: #f0efec;
+    --ink-secondary: #c3c2b7;
+    --gridline: #2c2c2a;
+    --baseline: #383835;
+    --primary: #3987e5;
+    --delta-up: #0ca30c;
+    --hairline: rgba(255, 255, 255, 0.1);
+  }
+}
+
+.dash * { box-sizing: border-box; }
+
+.dash-header { display: flex; flex-wrap: wrap; gap: 16px; justify-content: space-between; align-items: flex-end; }
+.dash h1 { font-size: 20px; font-weight: 600; letter-spacing: normal; margin: 0; color: var(--ink-primary); }
+.dash h2 { font-size: 14px; font-weight: 600; margin: 0 0 16px; color: var(--ink-primary); }
+.dash p { margin: 0; }
+.dash .muted { color: var(--ink-muted); }
+
+.dash .pills { display: flex; gap: 4px; padding: 4px; background: var(--surface); border: 1px solid var(--hairline); border-radius: 999px; }
+.dash .pill {
+  font-family: inherit; font-size: 13px; font-weight: 500; color: var(--ink-secondary); background: none; border: 0;
+  padding: 6px 12px; border-radius: 999px; cursor: pointer;
+}
+.dash .pill:hover { color: var(--ink-primary); }
+.dash .pill.active { background: var(--primary); color: #fff; }
+.dash .pill:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+
+.dash .card { background: var(--surface); border: 1px solid var(--hairline); border-radius: 12px; padding: 16px; min-width: 0; }
+
+.dash .stats { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+.dash .stat-label { font-size: 13px; font-weight: 500; color: var(--ink-secondary); }
+.dash .stat-value { font-size: 28px; font-weight: 600; margin: 4px 0; }
+.dash .delta { font-size: 13px; font-weight: 500; }
+.dash .delta.up { color: var(--delta-up); }
+.dash .delta.down { color: var(--status-critical); }
+
+.dash .charts { display: grid; gap: 16px; grid-template-columns: 3fr 2fr; }
+@media (max-width: 860px) { .dash .charts { grid-template-columns: 1fr; } }
+
+.dash .chart { position: relative; width: 100%; }
+.dash .chart svg { display: block; overflow: visible; }
+.dash line.gridline { stroke: var(--gridline); stroke-width: 1; }
+.dash line.baseline { stroke: var(--baseline); stroke-width: 1; }
+.dash .tick { fill: var(--ink-muted); font-size: 11px; font-variant-numeric: tabular-nums; }
+.dash .line { fill: none; stroke: var(--primary); stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
+.dash .area { fill: var(--primary); opacity: 0.1; }
+.dash .dot { fill: var(--primary); stroke: var(--surface); stroke-width: 2; }
+.dash .crosshair { stroke: var(--baseline); stroke-width: 1; }
+.dash .bar { fill: var(--primary); transition: opacity 0.15s; }
+.dash .bar.dim { opacity: 0.4; }
+.dash .bar-label { fill: var(--ink-secondary); font-size: 13px; }
+.dash .bar-value { fill: var(--ink-primary); font-size: 13px; font-weight: 500; }
+
+.dash .tooltip {
+  position: absolute; pointer-events: none; background: var(--surface); border: 1px solid var(--hairline);
+  border-radius: 8px; padding: 8px 10px; box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12); white-space: nowrap;
+}
+.dash .tooltip-label { font-size: 12px; color: var(--ink-muted); }
+.dash .tooltip-value { font-weight: 600; }
+
+.dash .table-wrap { overflow-x: auto; }
+.dash table { width: 100%; border-collapse: collapse; }
+.dash th { text-align: left; font-size: 12px; font-weight: 500; color: var(--ink-muted); padding: 8px; border-bottom: 1px solid var(--gridline); }
+.dash td { padding: 10px 8px; border-bottom: 1px solid var(--gridline); white-space: nowrap; }
+.dash tr:last-child td { border-bottom: 0; }
+.dash .num { text-align: right; font-variant-numeric: tabular-nums; }
+
+.dash .status { display: inline-flex; gap: 6px; align-items: center; font-size: 13px; font-weight: 500; }
+.dash .status span { font-size: 11px; }
+.dash .status.paid span { color: var(--status-good); }
+.dash .status.pending span { color: var(--status-warning); }
+.dash .status.failed span { color: var(--status-critical); }

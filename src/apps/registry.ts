@@ -6,6 +6,8 @@ export type PracticeApp = {
   title: string
   description: string
   Component: ComponentType
+  /** Use the full page width instead of the narrow 720px column. */
+  wide?: boolean
 }
 
 /**
@@ -79,5 +81,12 @@ export const apps: PracticeApp[] = [
     title: 'Autocomplete',
     description: 'Typeahead search with debounced input and keyboard navigation. Tier 2 staple.',
     Component: lazy(() => import('./autocomplete')),
+  },
+  {
+    slug: 'dashboard',
+    title: 'Dashboard',
+    description: 'Stat tiles, SVG line + bar charts, orders table. Styled from DESIGN.md.',
+    Component: lazy(() => import('./dashboard')),
+    wide: true,
   },
 ]

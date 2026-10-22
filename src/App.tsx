@@ -7,9 +7,10 @@ import './App.css'
 function App() {
   const { pathname } = useLocation()
   const isHome = pathname === '/'
+  const wide = apps.some((app) => app.wide && pathname === `/${app.slug}`)
 
   return (
-    <div style={{ maxWidth: 720, margin: '0 auto', padding: '2rem 1rem', textAlign: 'left' }}>
+    <div style={{ maxWidth: wide ? 1200 : 720, margin: '0 auto', padding: '2rem 1rem', textAlign: 'left' }}>
       {!isHome && (
         <Link to="/" style={{ display: 'inline-block', marginBottom: '1.5rem' }}>
           ← All apps
