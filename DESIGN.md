@@ -22,19 +22,22 @@ colors:
   dark-gridline: "#2c2c2a"
   dark-primary: "#3987e5"
 typography:
-  family: 'system-ui, -apple-system, "Segoe UI", sans-serif'
   hero:
-    size: 28px
-    weight: 600
+    fontFamily: 'system-ui, -apple-system, "Segoe UI", sans-serif'
+    fontSize: 28px
+    fontWeight: 600
   title:
-    size: 20px
-    weight: 600
+    fontFamily: 'system-ui, -apple-system, "Segoe UI", sans-serif'
+    fontSize: 20px
+    fontWeight: 600
   label:
-    size: 13px
-    weight: 500
+    fontFamily: 'system-ui, -apple-system, "Segoe UI", sans-serif'
+    fontSize: 13px
+    fontWeight: 500
   body:
-    size: 14px
-    weight: 400
+    fontFamily: 'system-ui, -apple-system, "Segoe UI", sans-serif'
+    fontSize: 14px
+    fontWeight: 400
 spacing:
   xs: 4px
   sm: 8px
