@@ -135,16 +135,16 @@ function addEdge(node1, node2) {
   graph.get(node2).push(node1);
 }
 
-addNode("A");
-addNode("B");
-addNode("C");
-addNode("D");
-addNode("E");
+addNode('A');
+addNode('B');
+addNode('C');
+addNode('D');
+addNode('E');
 
-addEdge("A", "B");
-addEdge("A", "C");
-addEdge("B", "D");
-addEdge("B", "E");
+addEdge('A', 'B');
+addEdge('A', 'C');
+addEdge('B', 'D');
+addEdge('B', 'E');
 // console.log(graph);
 //A que-b,c
 // c,d
@@ -201,12 +201,12 @@ function dfsRecursion(graph, start, visited) {
 // dfsRecursion(graph, "A", new Set());
 
 const graph2 = new Map([
-  ["A", ["B", "C"]],
-  ["B", ["A", "D"]],
-  ["C", ["A", "E"]],
-  ["D", ["B"]],
-  ["E", ["C", "F"]],
-  ["F", ["E"]],
+  ['A', ['B', 'C']],
+  ['B', ['A', 'D']],
+  ['C', ['A', 'E']],
+  ['D', ['B']],
+  ['E', ['C', 'F']],
+  ['F', ['E']],
 ]);
 
 function hasPath(graph, source, dest) {
@@ -248,16 +248,16 @@ function shortestPath(graph, source, dest) {
 // console.log(shortestPath(graph2, "B", "F"));
 
 const graph3 = new Map([
-  ["A", ["B"]],
-  ["B", ["A"]],
+  ['A', ['B']],
+  ['B', ['A']],
 
-  ["C", []],
+  ['C', []],
 
-  ["D", ["E"]],
-  ["E", ["D"]],
+  ['D', ['E']],
+  ['E', ['D']],
 
-  ["F", ["G"]],
-  ["G", ["F"]],
+  ['F', ['G']],
+  ['G', ['F']],
 ]);
 
 function countComponents(graph) {
@@ -275,21 +275,21 @@ function countComponents(graph) {
 // console.log(countComponents(graph3));
 
 const graph4 = new Map([
-  ["A", ["B", "D"]],
-  ["B", ["A", "C", "E"]],
-  ["C", ["B"]],
-  ["D", ["A", "E"]],
-  ["E", ["B", "D"]],
+  ['A', ['B', 'D']],
+  ['B', ['A', 'C', 'E']],
+  ['C', ['B']],
+  ['D', ['A', 'E']],
+  ['E', ['B', 'D']],
 
-  ["F", ["G", "H"]],
-  ["G", ["F"]],
-  ["H", ["F"]],
+  ['F', ['G', 'H']],
+  ['G', ['F']],
+  ['H', ['F']],
 
-  ["I", ["J"]],
-  ["J", ["I", "K"]],
-  ["K", ["J"]],
+  ['I', ['J']],
+  ['J', ['I', 'K']],
+  ['K', ['J']],
 
-  ["L", []],
+  ['L', []],
 ]);
 
 function largestComponent(graph) {
@@ -305,10 +305,10 @@ function largestComponent(graph) {
 }
 
 const grid = [
-  ["1", "1", "0", "0", "0"], // no. of island = 2
-  ["1", "1", "1", "0", "0"],
-  ["0", "0", "1", "0", "0"],
-  ["0", "0", "0", "1", "1"],
+  ['1', '1', '0', '0', '0'], // no. of island = 2
+  ['1', '1', '1', '0', '0'],
+  ['0', '0', '1', '0', '0'],
+  ['0', '0', '0', '1', '1'],
 ];
 
 function dfsGrid(grid, row, col, visited) {
@@ -316,11 +316,11 @@ function dfsGrid(grid, row, col, visited) {
   // check if outside grid
   if (row < 0 || row >= grid.length || col < 0 || col >= grid[0].length) return;
   // no land
-  if (grid[row][col] === "0") return;
+  if (grid[row][col] === '0') return;
 
   const key = `${row},${col}`;
 
-  console.log(key, "key");
+  console.log(key, 'key');
   if (visited.has(key)) return;
   // mark the land as visited
   visited.add(key);
@@ -340,7 +340,7 @@ function numIslands(grid) {
     for (let col = 0; col < grid[0].length; col++) {
       const key = `${row},${col}`;
       // console.log(key);
-      if (grid[row][col] === "1" && !visited.has(key)) {
+      if (grid[row][col] === '1' && !visited.has(key)) {
         dfsGrid(grid, row, col, visited);
         count++;
       }
@@ -371,12 +371,12 @@ class TreeNode<T> {
   }
 }
 
-const A = new TreeNode("A");
-const B = new TreeNode("B");
-const C = new TreeNode("C");
-const D = new TreeNode("D");
-const E = new TreeNode("E");
-const F = new TreeNode("F");
+const A = new TreeNode('A');
+const B = new TreeNode('B');
+const C = new TreeNode('C');
+const D = new TreeNode('D');
+const E = new TreeNode('E');
+const F = new TreeNode('F');
 
 A.left = B;
 A.right = C;
@@ -386,7 +386,7 @@ B.right = E;
 
 C.right = F;
 
-console.log(A, "lll");
+console.log(A, 'lll');
 
 function preorder(node) {
   /// leftmost node first then right most
@@ -451,17 +451,76 @@ function twoSum(nums, target) {
 
   for (const [index, num] of nums.entries()) {
     const needed = target - num;
-
     if (map.has(needed)) {
-      return [map.get(needed), num];
+      return [index, map.get(needed)];
     }
-
     map.set(num, index);
   }
   return [];
 }
 
-function anagram(s1 = "rrraatt", s2 = "ttaarrrr") {
+// 2 pointers approach for sorted arr
+function twoSumnew(arr = [], target) {
+  let left = 0;
+  let right = arr.length - 1;
+
+  while (left < right) {
+    const sum = [arr[left] + arr[right]];
+    if (sum === target) return [left, right];
+
+    if (sum > target) {
+      right--;
+    } else {
+      left++;
+    }
+  }
+  return [];
+}
+
+// sliding window ---
+//nums = [2, 1, 5, 1, 3, 2]
+//k = 3
+
+function maxSum(arr, k) {
+  let windowSum = 0;
+  let maxsum = -Infinity;
+
+  for (let i = 0; i < arr.length; i++) {
+    windowSum = windowSum + arr[i];
+
+    if (i >= k) {
+      windowSum -= arr[i - k];
+    }
+    if (i >= k - 1) {
+      maxsum = Math.max(maxsum, windowSum);
+    }
+  }
+  return maxSum;
+}
+
+// variable window
+// longest substring
+// let s = abcdaf
+
+function lengthoflongestsubstr(s) {
+  const set = new Set();
+  let left = 0;
+  let maxlen = 0;
+
+  for (let right = 0; right < s.length; right++) {
+    while (set.has(s[right])) {
+      set.delete(s[left]);
+      left++;
+    }
+    set.add(s[right]);
+
+    maxlen = Math.max(maxlen, right - left + 1);
+  }
+
+  return maxlen;
+}
+
+function anagram(s1 = 'rrraatt', s2 = 'ttaarrrr') {
   const charMap = new Map();
 
   if (s1.length !== s2.length) return false;
@@ -536,26 +595,6 @@ function isPalindrome(str) {
   return true;
 }
 
-///nums = [1, 2, 4, 6, 10, 15]; // sorted array
-//target = 12;
-function sum2(nums, target) {
-  let left = 0;
-  let right = nums.length - 1;
-
-  while (left < right) {
-    let sum = nums[left] + nums[right];
-    if (sum === target) return [left, right];
-
-    if (sum < target) {
-      right--;
-    }
-    if (sum > target) {
-      left++;
-    }
-  }
-  return [];
-}
-
 function moveZeroes(nums = [1, 0, 0, 3, 12]) {
   // fast, slow pointer
   let slow = 0;
@@ -585,4 +624,119 @@ function maxArea(height = []) {
     else right--;
   }
   return maxWater;
+}
+
+class ListNode {
+  key: number;
+  value: number;
+  prev: ListNode | null;
+  next: ListNode | null;
+
+  constructor(key: number, value: number) {
+    this.key = key;
+    this.value = value;
+    this.prev = null;
+    this.next = null;
+  }
+}
+
+const a = new ListNode(1, 10);
+
+console.log(a);
+
+class LRUCache {
+  capacity: number;
+  map: Map<number, ListNode>;
+  head: ListNode;
+  tail: ListNode;
+
+  constructor(capacity: number) {
+    this.capacity = capacity;
+    this.map = new Map();
+
+    this.head = new ListNode(0, 0);
+    this.tail = new ListNode(0, 0);
+
+    this.head.next = this.tail;
+    this.tail.prev = this.head;
+  }
+
+  removeNode(node: ListNode) {
+    node.prev && (node.prev.next = node.next);
+    node.next && (node.next.prev = node.prev);
+  }
+
+  addToEnd(node: ListNode) {
+    const last = this.tail.prev;
+    last && (last.next = node);
+
+    node.prev = last;
+    node.next = this.tail;
+    this.tail.prev = node;
+  }
+
+  get(key: number) {
+    const currNode = this.map.get(key);
+    if (currNode) {
+      this.removeNode(currNode);
+      this.addToEnd(currNode);
+      return currNode.value;
+    }
+    return -1;
+  }
+
+  put(key: number, value: number) {
+    // case 1 if key already exist
+    const currKey = this.map.has(key);
+    if (currKey) {
+      const currNode = this.map.get(key);
+      if (currNode) {
+        currNode.value = value;
+        this.removeNode(currNode);
+        this.addToEnd(currNode);
+      }
+      return;
+    }
+
+    // case 2 if no exist
+    const newNode = new ListNode(key, value);
+    this.map.set(key, newNode);
+    this.addToEnd(newNode);
+
+    // case 3 if cachesize is less
+    if (this.map.size > this.capacity) {
+      const lru = this.head.next;
+      if (lru) {
+        this.removeNode(lru);
+        this.map.delete(lru.key);
+      }
+    }
+  }
+}
+
+let k = new LRUCache(2);
+k.addToEnd(new ListNode(1, 1));
+k.addToEnd(new ListNode(2, 2));
+console.log(k);
+
+// lru cache with map
+
+class LRUCacheMap {
+  capacity: number;
+  cache: Map<number, number>;
+
+  constructor(capacity: number) {
+    this.capacity = capacity;
+    this.cache = new Map();
+  }
+
+  get(key) {
+    const currValue = this.cache.get(key);
+    if (currValue) {
+      this.cache.delete(key);
+      this.cache.set(key, currValue);
+      return currValue;
+    }
+    return -1;
+  }
 }

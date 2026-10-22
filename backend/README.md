@@ -8,8 +8,9 @@ comment).
 
 ```bash
 cd backend
-python3 -m venv venv
-source venv/bin/activate      # Windows: venv\Scripts\activate
+python -m venv venv           # Windows: python (not python3)
+# macOS/Linux: python3 -m venv venv
+source venv/bin/activate      # Windows: venv\Scripts\Activate.ps1
 pip install -r requirements.txt
 ```
 
@@ -25,5 +26,5 @@ pip install -r requirements.txt
 
 Run any file directly:
 ```bash
-python3 backend/01_basics.py
+python backend/01_basics.py   # Windows: python  (python3 is often a Store stub)
 ```

@@ -42,7 +42,7 @@ export const apps: PracticeApp[] = [
   },
   {
     slug: 'table',
-    title: 'Sortable Table',
+    title: 'Data Table',
     description: 'Sort a positions table by any column, asc/desc. Tier 2, finance angle.',
     Component: lazy(() => import('./table')),
   },
@@ -88,5 +88,29 @@ export const apps: PracticeApp[] = [
     description: 'Stat tiles, SVG line + bar charts, orders table. Styled from DESIGN.md.',
     Component: lazy(() => import('./dashboard')),
     wide: true,
+  },
+  {
+    slug: 'carousel',
+    title: 'Carousel',
+    description: 'Dummy carousel placeholder.',
+    Component: lazy(() => import('./carousel')),
+  },
+  {
+    slug: 'transfer-list',
+    title: 'Transfer List',
+    description: 'Move checked items between two lists. Tier 2 staple.',
+    Component: lazy(() => import('./transfer-list')),
+  },
+  {
+    slug: 'checkbox-tree',
+    title: 'Hierarchical Checkboxes',
+    description: 'Parent/child checkbox tree with indeterminate state. Tier 2/3 staple.',
+    Component: lazy(() => import('./checkbox-tree')),
+  },
+  {
+    slug: 'toast',
+    title: 'Toast Notifications',
+    description: 'Toast system with stacking, auto-dismiss, and variants. Tier 2 staple.',
+    Component: lazy(() => import('./toast')),
   },
 ]
